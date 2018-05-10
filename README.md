@@ -23,7 +23,7 @@ base_model = nn.Sequential(*list(resnet18(pretrained=True).children())[:6])
 dim = list(base_model.parameters())[-1].shape[0]  # last channels (128)
 
 # Define model for embedding
-net_vlad = NetVLAD(num_clusters=32, dim=dim, alpha=0.1)
+net_vlad = NetVLAD(num_clusters=32, dim=dim, alpha=1.0)
 model = EmbedNet(base_model, net_vlad).cuda()
 
 # Define loss
